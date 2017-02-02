@@ -3,7 +3,9 @@
 
 This module polls streams of objects for their latest item(s).
 
-It's effectively `tail -f` for [`Stream`s](https://nodejs.org/api/stream.html), and was created in order to help implement small-scale firehoses.
+It's sort of like `tail -f` for [`Stream`s](https://nodejs.org/api/stream.html), but acts upon the head of the stream.
+
+It was created in order to help implement small-scale firehoses.
 
 ## Example
 
