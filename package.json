@@ -2,7 +2,7 @@
   "name": "monitor-head-stream",
   "version": "0.0.0",
   "description": "Monitor the head of a stream.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": "git@github.com:sebinsua/monitor-head-stream.git",
   "author": "Seb Insua <me@sebinsua.com>",
   "license": "MIT",
@@ -30,6 +30,7 @@
     "release": "npm test && npm run -s format && npm run -s build && standard-version && npm run -s push && npm publish"
   },
   "dependencies": {
+    "continue-stream": "^2.0.0",
     "debug": "^2.6.0",
     "readable-stream": "^2.2.2"
   },
@@ -40,6 +41,7 @@
     "babel-plugin-transform-class-properties": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.22.0",
     "babel-preset-env": "^1.1.8",
+    "ghooks": "^2.0.0",
     "prettier-standard-formatter": "^0.111111111111111.111111111111111",
     "standard-version": "^4.0.0",
     "validate-commit-msg": "^2.10.1"
