@@ -7,6 +7,8 @@ It's sort of like `tail -f` for [`Stream`s](https://nodejs.org/api/stream.html),
 
 It was created in order to help implement small-scale firehoses.
 
+Other applications might include sending alerts [via SMS](https://github.com/twilio/twilio-node) or [OSX notifications](https://github.com/mikaelbr/node-notifier) on breaking news or the mention of particular topics.
+
 ## Example
 
 ```js
