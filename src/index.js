@@ -8,15 +8,19 @@ const always = value => () => value
 const toId = (v = {}) => v.id
 
 class ConsumeUntil extends Transform {
+  i = 0;
 
-  i = 0
+  stopWhen = null;
+  toIdentifier = null;
+  skip = null;
+  disconnectStream = null;
 
-  stopWhen = null
-  toIdentifier = null
-  skip = null
-  disconnectStream = null
-
-  constructor (stopWhen = always(true), toIdentifier = toId, skip = always(false), disconnectStream) {
+  constructor (
+    stopWhen = always(true),
+    toIdentifier = toId,
+    skip = always(false),
+    disconnectStream
+  ) {
     super({ objectMode: true })
     this.stopWhen = stopWhen
     this.toIdentifier = toIdentifier
@@ -51,20 +55,29 @@ class ConsumeUntil extends Transform {
     }
 
     cb()
-  }
-
+  };
 }
 
-function createNext (createStream, indexBy = toId, skip = always(false), interval = NEXT_INTERVAL) {
+function createNext (
+  createStream,
+  indexBy = toId,
+  skip = always(false),
+  interval = NEXT_INTERVAL
+) {
   return function next (cb, previousStream) {
     const hasCount = count => (_, i) => i >= count
     const stopAt = value => currentValue => value === indexBy(currentValue)
-    const stopWhen = previousStream ? stopAt(previousStream.firstValue) : hasCount(1)
+    const stopWhen = previousStream
+      ? stopAt(previousStream.firstValue)
+      : hasCount(1)
 
     const stream = createStream()
     const consumeUntil = new ConsumeUntil(stopWhen, indexBy, skip, stream)
 
-    return setTimeout(() => cb(null, stream.pipe(consumeUntil)), previousStream ? interval : 0)
+    return setTimeout(
+      () => cb(null, stream.pipe(consumeUntil)),
+      previousStream ? interval : 0
+    )
   }
 }
 

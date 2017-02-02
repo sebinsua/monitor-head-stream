@@ -9,6 +9,12 @@
   "engines": {
     "node": "^6"
   },
+  "ava": {
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  },
   "standard": {
     "parser": "babel-eslint",
     "globals": [
@@ -43,6 +49,7 @@
     "babel-preset-env": "^1.1.8",
     "ghooks": "^2.0.0",
     "prettier-standard-formatter": "^0.111111111111111.111111111111111",
+    "rimraf": "^2.5.4",
     "standard-version": "^4.0.0",
     "validate-commit-msg": "^2.10.1"
   }
