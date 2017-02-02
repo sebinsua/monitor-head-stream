@@ -4,7 +4,7 @@ import pump from 'pump'
 
 import monitorHeadStream from '../src'
 
-const createStream = () => new TimelineStream('etiquiet')
+const createStream = () => new TimelineStream('sebinsua')
 const indexBy = obj => obj.id
 const skipWhenPinned = obj => obj.isPinned === true
 
